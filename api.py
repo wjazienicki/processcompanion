@@ -31,3 +31,15 @@ def get_last_x_matches(puuid, x_matches=20):
 
     matchid_list = response.json()
     return matchid_list
+
+def get_match_data(matchid):
+    """
+    returns data for given match by its match ID
+    :param matchid: str
+    :return: json object containing data about the match
+    """
+    response = requests.get("https://europe.api.riotgames.com/lol/match/v5/matches/{}".format(matchid),
+                            headers=constants.headers)
+    return response.json()
+
+# get_match_data("EUW1_6067877655")
